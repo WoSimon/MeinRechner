@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Taschenrechner</string>
+
+    <string name="zero">0</string>
+    <string name="eins">1</string>
+    <string name="zwei">2</string>
+    <string name="drei">3</string>
+    <string name="vier">4</string>
+    <string name="fuenf">5</string>
+    <string name="sechs">6</string>
+    <string name="sieben">7</string>
+    <string name="acht">8</string>
+    <string name="neun">9</string>
+
+    <string name="loeschen">DEL</string>
+    <string name="exponent">^</string>
+    <string name="klammern">( )</string>
+    <string name="geteilt">/</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="punkt">.</string>
+    <string name="mal">X</string>
+    <string name="gleich">=</string>
+    <string name="vergangen">Letzte</string>
+
+    <string name="backspace"> </string>
+
+    <string name="anzeige">Trage eine Zahl ein</string>
+    <string name="Letzte">letzte</string>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3055" />
+        <entry key="app/src/main/res/drawable/button.xml" value="0.1718775634765625" />
+        <entry key="app/src/main/res/drawable/ic_baseline_folder_24.xml" value="0.308" />
+        <entry key="app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.3115" />
+        <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.161" />
+        <entry key="app/src/main/res/drawable/ic_delete_red.xml" value="0.3115" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3055" />
+        <entry key="app/src/main/res/drawable/ic_letzte.xml" value="0.3115" />
+        <entry key="app/src/main/res/drawable/ic_logo_rheinischefhkoeln.xml" value="0.3115" />
+        <entry key="app/src/main/res/drawable/rechenzeichen.xml" value="0.1495" />
+        <entry key="app/src/main/res/drawable/zahlen.xml" value="0.213" />
+        <entry key="app/src/main/res/layout/activity_history.xml" value="0.2477355072463768" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25331471761067703" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.3890625" />
+        <entry key="app/src/main/res/layout/custom_image.xml" value="0.3890625" />
+        <entry key="app/src/main/res/layout/history_layout.xml" value="0.2477355072463768" />
+        <entry key="app/src/main/res/layout/my_row.xml" value="0.5872421264648438" />
+        <entry key="app/src/main/res/layout/row.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/menu/my_menu.xml" value="0.3890625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

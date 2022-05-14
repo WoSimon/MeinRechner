@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/calculationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@+id/resultView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/resultView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/calculationView"
+        android:layout_marginTop="80dp"
+        android:textSize="50sp"
+        />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/resultView"
+        app:layout_constraintVertical_bias="0.95">
+
+        <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/loeschenBTN"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button"
+            android:text="@string/loeschen"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:id="@+id/vergangenBTN"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button"
+            android:contentDescription="@string/Letzte"
+            app:srcCompat="@drawable/ic_letzte"/>
+    </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/einsBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/eins"
+                android:background="@drawable/zahlen"/>
+
+            <Button
+                android:id="@+id/zweiBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/zwei"
+                android:background="@drawable/zahlen"/>
+
+            <Button
+                android:id="@+id/dreiBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/zahlen"
+                android:text="@string/drei"
+                android:textColor="@color/textColor"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/geteiltBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/geteilt"
+                android:background="@drawable/rechenzeichen"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/vierBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/vier"
+                android:background="@drawable/zahlen"/>
+
+            <Button
+                android:id="@+id/fuenfBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/fuenf"
+                android:background="@drawable/zahlen"/>
+
+            <Button
+                android:id="@+id/sechsBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/sechs"
+                android:background="@drawable/zahlen"/>
+
+            <Button
+                android:id="@+id/malBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/mal"
+                android:background="@drawable/rechenzeichen"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/siebenBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/sieben"
+                android:background="@drawable/zahlen"/>
+
+            <Button
+                android:id="@+id/achtBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/acht"
+                android:background="@drawable/zahlen"
+                />
+
+            <Button
+                android:id="@+id/neunBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/neun"
+                android:background="@drawable/zahlen"/>
+
+            <Button
+                android:id="@+id/minusBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/minus"
+                android:background="@drawable/rechenzeichen"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/punktBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/punkt"
+                android:background="@drawable/rechenzeichen"
+                />
+
+            <Button
+                android:id="@+id/zeroBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/zero"
+                android:background="@drawable/zahlen"/>
+
+            <Button
+                android:id="@+id/gleichBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:textSize="24sp"
+                android:textColor="@color/textColor"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:text="@string/gleich"
+                android:background="@drawable/rechenzeichen"/>
+
+            <Button
+                android:id="@+id/plusBTN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/rechenzeichen"
+                android:text="@string/plus"
+                android:textColor="@color/textColor"
+                android:textSize="24sp" />
+
+        </TableRow>
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
