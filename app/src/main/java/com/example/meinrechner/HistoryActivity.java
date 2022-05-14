@@ -130,7 +130,13 @@ public class HistoryActivity extends AppCompatActivity {
                     else {
                         op2.add(cursor.getString(3));
                     }
-                    Double resultDouble = Double.parseDouble(cursor.getString(4));
+                    Double resultDouble;
+                    try {
+                        resultDouble = Double.parseDouble(cursor.getString(4));
+                    }
+                    catch (Exception e) {
+                        resultDouble = 0.0;
+                    }
                     if (resultDouble % 1 == 0) {
                         String resultString = String.valueOf(cursor.getString(4));
                         resultString = resultString.replace(".0", "");

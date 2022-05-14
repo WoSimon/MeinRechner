@@ -320,16 +320,17 @@ public class MainActivity extends AppCompatActivity {
                     op2 = Double.parseDouble(String.format("%.2f", op2));
                 }
                 catch (Exception e){
-                    String currentText = calculationView.getText().toString();
-                    calculationView.setText(currentText + "0 = ");
-                    op2 = 0;
+                    Toast.makeText(MainActivity.this, "Es ist ein Fehler aufgetreten", Toast.LENGTH_SHORT).show();
                 }
-                if (op2 == 0 || String.valueOf(op2).equals("")){
+                if (calculationView.getText().length() == 0 && !(calculationView.getText().equals(".")) && result != 0) {
+                    Toast.makeText(MainActivity.this, "Bitte zuerst eine Zahl eingeben", Toast.LENGTH_SHORT).show();
+                }
+                else if (String.valueOf(op1).equals("") || String.valueOf(op2).equals("") || String.valueOf(op1).equals(".") || String.valueOf(op2).equals(".") || String.valueOf(operator).equals("")) {
+                    Toast.makeText(MainActivity.this, "Geben Sie eine vollständige Rechnung ein", Toast.LENGTH_SHORT).show();
+                }
+                else if (String.valueOf(op2).equals("")){
                     Toast.makeText(MainActivity.this, "Division durch 0 nicht möglich", Toast.LENGTH_SHORT).show();
                     resultView.setText("nDef");
-                }
-                else if (calculationView.getText().length() == 0 && !(calculationView.getText().equals(".")) && result != 0) {
-                    Toast.makeText(MainActivity.this, "Bitte zuerst eine Zahl eingeben", Toast.LENGTH_SHORT).show();
                 }
                 else if (Add || Sub || Multiply || Divide) {
                     if (Add) {
@@ -359,6 +360,9 @@ public class MainActivity extends AppCompatActivity {
                             resultView.setText(result + "");
                         }
                         Add = false;
+                        String timestamp = new Timestamp(System.currentTimeMillis()).toString();
+                        MyDatabaseHelper MyDB = new MyDatabaseHelper(MainActivity.this);
+                        MyDB.addCalculation(op1, Character.toString(operator), op2, result, timestamp);
                     }
 
                     if (Sub) {
@@ -388,6 +392,9 @@ public class MainActivity extends AppCompatActivity {
                             resultView.setText(result + "");
                         }
                         Sub = false;
+                        String timestamp = new Timestamp(System.currentTimeMillis()).toString();
+                        MyDatabaseHelper MyDB = new MyDatabaseHelper(MainActivity.this);
+                        MyDB.addCalculation(op1, Character.toString(operator), op2, result, timestamp);
                     }
 
                     if (Multiply) {
@@ -418,6 +425,9 @@ public class MainActivity extends AppCompatActivity {
                             resultView.setText(result + "");
                         }
                         Multiply = false;
+                        String timestamp = new Timestamp(System.currentTimeMillis()).toString();
+                        MyDatabaseHelper MyDB = new MyDatabaseHelper(MainActivity.this);
+                        MyDB.addCalculation(op1, Character.toString(operator), op2, result, timestamp);
                     }
 
                     if (Divide) {
@@ -447,11 +457,11 @@ public class MainActivity extends AppCompatActivity {
                             resultView.setText(result + "");
                         }
                         Divide = false;
+                        String timestamp = new Timestamp(System.currentTimeMillis()).toString();
+                        MyDatabaseHelper MyDB = new MyDatabaseHelper(MainActivity.this);
+                        MyDB.addCalculation(op1, Character.toString(operator), op2, result, timestamp);
                     }
                 }
-                String timestamp = new Timestamp(System.currentTimeMillis()).toString();
-                MyDatabaseHelper MyDB = new MyDatabaseHelper(MainActivity.this);
-                MyDB.addCalculation(op1, Character.toString(operator), op2, result, timestamp);
                 operator = '\0';
                 op1 = 0;
                 op2 = 0;
@@ -463,6 +473,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 calculationView.setText("");
                 resultView.setText("");
+                operator = '\0';
                 op1 = 0.0;
                 op2 = 0.0;
                 deci = false;
