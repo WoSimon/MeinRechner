@@ -183,15 +183,23 @@ public class MainActivity extends AppCompatActivity {
                     result = 0;
                     resultView.setText("");
                     calculationView.setText("");
-                    Toast.makeText(MainActivity.this, "Bitte zuerst eine Zahl eingeben", Toast.LENGTH_SHORT).show();
                 }
-                if (calculationView.getText().length() != 0 && !(calculationView.getText().equals("."))) {
+                if (calculationView.getText().length() != 0 && !(calculationView.getText().equals(".")) && operator == '\0') {
                     op1 = Double.parseDouble(calculationView.getText() + "");
                     op1 = Double.parseDouble(String.format("%.2f", op1));
                     Add = true;
                     deci = false;
                     operator = '+';
-                    calculationView.setText(op1 + " + ");
+                    if (op1 % 1 == 0) {
+                        String op1String = String.valueOf(op1);
+                        calculationView.setText(op1String.substring(0, op1String.indexOf('.')) + "+");
+                    }
+                    else {
+                        calculationView.setText(op1 + " + ");
+                    }
+                }
+                else if (!(operator == '\0')){
+                    Toast.makeText(MainActivity.this, "Nicht mehr als ein Rechenzeichen möglich", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     //Fehlermeldung wenn keine Zahl eingegeben wurde
@@ -207,15 +215,23 @@ public class MainActivity extends AppCompatActivity {
                     result = 0;
                     resultView.setText("");
                     calculationView.setText("");
-                    Toast.makeText(MainActivity.this, "Bitte zuerst eine Zahl eingeben", Toast.LENGTH_SHORT).show();
                 }
-                if (calculationView.getText().length() != 0 && !(calculationView.getText().equals("."))) {
+                if (calculationView.getText().length() != 0 && !(calculationView.getText().equals(".")) && operator == '\0') {
                     op1 = Double.parseDouble(calculationView.getText() + "");
                     op1 = Double.parseDouble(String.format("%.2f", op1));
                     Sub = true;
                     deci = false;
                     operator = '-';
-                    calculationView.setText(op1 + " - ");
+                    if (op1 % 1 == 0) {
+                        String op1String = String.valueOf(op1);
+                        calculationView.setText(op1String.substring(0, op1String.indexOf('.')) + " - ");
+                    }
+                    else{
+                        calculationView.setText(op1 + " - ");
+                    }
+                }
+                else if (!(operator == '\0')){
+                    Toast.makeText(MainActivity.this, "Nicht mehr als ein Rechenzeichen möglich", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     //Fehlermeldung wenn keine Zahl eingegeben wurde
@@ -231,15 +247,23 @@ public class MainActivity extends AppCompatActivity {
                     result = 0;
                     resultView.setText("");
                     calculationView.setText("");
-                    Toast.makeText(MainActivity.this, "Bitte zuerst eine Zahl eingeben", Toast.LENGTH_SHORT).show();
                 }
-                if (calculationView.getText().length() != 0 && !(calculationView.getText().equals("."))) {
+                if (calculationView.getText().length() != 0 && !(calculationView.getText().equals(".")) && operator == '\0') {
                     op1 = Double.parseDouble(calculationView.getText() + "");
                     op1 = Double.parseDouble(String.format("%.2f", op1));
                     Multiply = true;
                     deci = false;
                     operator = '*';
-                    calculationView.setText(op1 + " * ");
+                    if (op1 % 1 == 0) {
+                        String op1String = String.valueOf(op1);
+                        calculationView.setText(op1String.substring(0, op1String.indexOf('.')) + " * ");
+                    }
+                    else{
+                        calculationView.setText(op1 + " * ");
+                    }
+                }
+                else if (!(operator == '\0')){
+                    Toast.makeText(MainActivity.this, "Nicht mehr als ein Rechenzeichen möglich", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     //Fehlermeldung wenn keine Zahl eingegeben wurde
@@ -256,13 +280,26 @@ public class MainActivity extends AppCompatActivity {
                     resultView.setText("");
                     calculationView.setText("");
                 }
-                if (calculationView.getText().length() != 0 && !(calculationView.getText().equals("."))) {
+                if (calculationView.getText().length() != 0 && !(calculationView.getText().equals(".")) && operator == '\0') {
                     op1 = Double.parseDouble(calculationView.getText() + "");
                     op1 = Double.parseDouble(String.format("%.2f", op1));
                     Divide = true;
                     deci = false;
                     operator = '/';
-                    calculationView.setText(op1 + " / ");
+                    if (op1 % 1 == 0) {
+                        String op1String = String.valueOf(op1);
+                        calculationView.setText(op1String.substring(0 , op1String.indexOf(('.'))) + " / ");
+                    }
+                    else{
+                        calculationView.setText(op1 + " / ");
+                    }
+                }
+                else if (!(operator == '\0')){
+                    Toast.makeText(MainActivity.this, "Nicht mehr als ein Rechenzeichen möglich", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    //Fehlermeldung wenn keine Zahl eingegeben wurde
+                    Toast.makeText(MainActivity.this, "Bitte zuerst eine Zahl eingeben", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -277,36 +314,138 @@ public class MainActivity extends AppCompatActivity {
         button_Equ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                op2 = Double.parseDouble(calculationView.getText().toString().substring(calculationView.getText().toString().indexOf(" ")).substring(3));
-                op2 = Double.parseDouble(String.format("%.2f", op2));
                 deci = false;
-                if (calculationView.getText().length() == 0 && !(calculationView.getText().equals("."))) {
+                try {
+                    op2 = Double.parseDouble(calculationView.getText().toString().substring(calculationView.getText().toString().indexOf(" ")).substring(3));
+                    op2 = Double.parseDouble(String.format("%.2f", op2));
+                }
+                catch (Exception e){
+                    String currentText = calculationView.getText().toString();
+                    calculationView.setText(currentText + "0 = ");
+                    op2 = 0;
+                }
+                if (op2 == 0 || String.valueOf(op2).equals("")){
+                    Toast.makeText(MainActivity.this, "Division durch 0 nicht möglich", Toast.LENGTH_SHORT).show();
+                    resultView.setText("nDef");
+                }
+                else if (calculationView.getText().length() == 0 && !(calculationView.getText().equals(".")) && result != 0) {
                     Toast.makeText(MainActivity.this, "Bitte zuerst eine Zahl eingeben", Toast.LENGTH_SHORT).show();
                 }
                 else if (Add || Sub || Multiply || Divide) {
                     if (Add) {
-                        calculationView.setText(op1 + " + " + op2 + " = ");
                         result = Double.parseDouble(String.format("%.2f", op1 + op2));
-                        resultView.setText(result + "");
+                        switch (checkInteger(op1, op2)) {
+                            case 1:
+                                String op1String = String.valueOf(op1);
+                                calculationView.setText(op1String.substring(0, op1String.indexOf('.')) + " + " + op2 + " = ");
+                                break;
+                            case 2:
+                                String op2String = String.valueOf(op2);
+                                calculationView.setText(op1 + " + " + op2String.substring(0, op2String.indexOf('.')) + " = ");
+                                break;
+                            case 3:
+                                String op1String2= String.valueOf(op1);
+                                String op2String2 = String.valueOf(op2);
+                                calculationView.setText(op1String2.substring(0, op1String2.indexOf('.')) + " + " + op2String2.substring(0, op2String2.indexOf('.')) + " = ");
+                                break;
+                            default:
+                                calculationView.setText(op1 + " + " + op2 + " = ");
+                        }
+                        if (result % 1 == 0) {
+                            String resultString = String.valueOf(result);
+                            resultView.setText(resultString.substring(0, resultString.indexOf('.')));
+                        }
+                        else {
+                            resultView.setText(result + "");
+                        }
                         Add = false;
                     }
 
                     if (Sub) {
-                        calculationView.setText(op1 + " - " + op2 + " = ");
+                        switch (checkInteger(op1, op2)) {
+                            case 1:
+                                String op1String = String.valueOf(op1);
+                                calculationView.setText(op1String.substring(0, op1String.indexOf('.')) + " - " + op2 + " = ");
+                                break;
+                            case 2:
+                                String op2String = String.valueOf(op2);
+                                calculationView.setText(op1 + " - " + op2String.substring(0, op2String.indexOf('.')) + " = ");
+                                break;
+                            case 3:
+                                String op1String2= String.valueOf(op1);
+                                String op2String2 = String.valueOf(op2);
+                                calculationView.setText(op1String2.substring(0, op1String2.indexOf('.')) + " - " + op2String2.substring(0, op2String2.indexOf('.')) + " = ");
+                                break;
+                            default:
+                                calculationView.setText(op1 + " - " + op2 + " = ");
+                        }
                         result = Double.parseDouble(String.format("%.2f", op1 - op2));
-                        resultView.setText(result + "");
+                        if (result % 1 == 0) {
+                            String resultString = String.valueOf(result);
+                            resultView.setText(resultString.substring(0, resultString.indexOf('.')));
+                        }
+                        else {
+                            resultView.setText(result + "");
+                        }
                         Sub = false;
                     }
+
                     if (Multiply) {
-                        calculationView.setText(op1 + " * " + op2 + " = ");
+                        switch (checkInteger(op1, op2)) {
+                            case 1:
+                                String op1String = String.valueOf(op1);
+                                calculationView.setText(op1String.substring(0, op1String.indexOf('.')) + " * " + op2 + " = ");
+                                break;
+                            case 2:
+                                String op2String = String.valueOf(op2);
+                                calculationView.setText(op1 + " * " + op2String.substring(0, op2String.indexOf('.')) + " = ");
+                                break;
+                            case 3:
+                                String op1String2= String.valueOf(op1);
+                                String op2String2 = String.valueOf(op2);
+                                calculationView.setText(op1String2.substring(0, op1String2.indexOf('.')) + " * " + op2String2.substring(0, op2String2.indexOf('.')) + " = ");
+                                break;
+                            default:
+                                calculationView.setText(op1 + " * " + op2 + " = ");
+
+                        }
                         result = Double.parseDouble(String.format("%.2f", op1 * op2));
-                        resultView.setText(result + "");
+                        if (result % 1 == 0) {
+                            String resultString = String.valueOf(result);
+                            resultView.setText(resultString.substring(0, resultString.indexOf('.')));
+                        }
+                        else {
+                            resultView.setText(result + "");
+                        }
                         Multiply = false;
                     }
+
                     if (Divide) {
-                        calculationView.setText(op1 + " / " + op2 + " = ");
+                        switch (checkInteger(op1, op2)) {
+                            case 1:
+                                String op1String = String.valueOf(op1);
+                                calculationView.setText(op1String.substring(0, op1String.indexOf('.')) + " / " + op2 + " = ");
+                                break;
+                            case 2:
+                                String op2String = String.valueOf(op2);
+                                calculationView.setText(op1 + " / " + op2String.substring(0, op2String.indexOf('.')) + " = ");
+                                break;
+                            case 3:
+                                String op1String2= String.valueOf(op1);
+                                String op2String2 = String.valueOf(op2);
+                                calculationView.setText(op1String2.substring(0, op1String2.indexOf('.')) + " / " + op2String2.substring(0, op2String2.indexOf('.')) + " = ");
+                                break;
+                            default:
+                                calculationView.setText(op1 + " / " + op2 + " = ");
+                        }
                         result = Double.parseDouble(String.format("%.2f", op1 / op2));
-                        resultView.setText(result + "");
+                        if (result % 1 == 0) {
+                            String resultString = String.valueOf(result);
+                            resultView.setText(resultString.substring(0, resultString.indexOf('.')));
+                        }
+                        else {
+                            resultView.setText(result + "");
+                        }
                         Divide = false;
                     }
                 }
@@ -314,6 +453,8 @@ public class MainActivity extends AppCompatActivity {
                 MyDatabaseHelper MyDB = new MyDatabaseHelper(MainActivity.this);
                 MyDB.addCalculation(op1, Character.toString(operator), op2, result, timestamp);
                 operator = '\0';
+                op1 = 0;
+                op2 = 0;
             }
         });
 
@@ -347,6 +488,25 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private int checkInteger (double op1, double op2) {
+        if (op1 % 1 == 0 && op2 % 1 == 0) {
+            return 3;
+        }
+        else if (op1 % 1 != 0 && op2 % 1 != 0) {
+            return 4;
+        }
+        else if (op1 % 1 == 0 && op2 % 1 != 0) {
+            return 1;
+        }
+        else if (op1 % 1 != 0 && op2 % 1 == 0) {
+            return 2;
+        }
+        else {
+            return 0;
+    }
 
     }
 }

@@ -111,11 +111,37 @@ public class HistoryActivity extends AppCompatActivity {
         else {
                 while (cursor.moveToNext()) {
                     id.add(cursor.getString(0));
-                    op1.add(cursor.getString(1));
-                    String operator_ = cursor.getString(2);
-                    operator.add(" " + operator_ + " ");
-                    op2.add(cursor.getString(3));
-                    result.add(cursor.getString(4));
+                    //Prüfe ob Operator 1, Operator 2 und result ganzzahlig sind, wenn ja, wird nur die Zahl angezeigt
+                    Double op1Double = Double.parseDouble(cursor.getString(1));
+                    if (op1Double % 1 == 0) {
+                        String op1String = String.valueOf(cursor.getString(1));
+                        op1String = op1String.replace(".0", "");
+                        op1.add(op1String);
+                    }
+                    else {
+                        op1.add(cursor.getString(1));
+                    }
+                    Double op2Double = Double.parseDouble(cursor.getString(3));
+                    if (op2Double % 1 == 0) {
+                        String op2String = String.valueOf(cursor.getString(3));
+                        op2String = op2String.replace(".0", "");
+                        op2.add(op2String);
+                    }
+                    else {
+                        op2.add(cursor.getString(3));
+                    }
+                    Double resultDouble = Double.parseDouble(cursor.getString(4));
+                    if (resultDouble % 1 == 0) {
+                        String resultString = String.valueOf(cursor.getString(4));
+                        resultString = resultString.replace(".0", "");
+                        result.add(resultString);
+                    }
+                    else {
+                        result.add(cursor.getString(4));
+                    }
+                    //Füge dem Operanden leerzeichen hinzu
+                    String operatorString = cursor.getString(2);
+                    operator.add(" " + operatorString + " ");
                     //Holen den Timestamp aus der Datenbank
                     String ts = cursor.getString(5);
 
