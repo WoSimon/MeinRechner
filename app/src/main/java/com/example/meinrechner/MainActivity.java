@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                     operator = '+';
                     if (op1 % 1 == 0) {
                         String op1String = String.valueOf(op1);
-                        calculationView.setText(op1String.substring(0, op1String.indexOf('.')) + "+");
+                        calculationView.setText(op1String.substring(0, op1String.indexOf('.')) + " + ");
                     }
                     else {
                         calculationView.setText(op1 + " + ");
@@ -334,7 +334,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (Add || Sub || Multiply || Divide) {
                     if (Add) {
-                        result = Double.parseDouble(String.format("%.2f", op1 + op2));
                         switch (checkInteger(op1, op2)) {
                             case 1:
                                 String op1String = String.valueOf(op1);
@@ -352,6 +351,7 @@ public class MainActivity extends AppCompatActivity {
                             default:
                                 calculationView.setText(op1 + " + " + op2 + " = ");
                         }
+                        result = Double.parseDouble(String.format("%.2f", op1 + op2));
                         if (result % 1 == 0) {
                             String resultString = String.valueOf(result);
                             resultView.setText(resultString.substring(0, resultString.indexOf('.')));
@@ -376,7 +376,7 @@ public class MainActivity extends AppCompatActivity {
                                 calculationView.setText(op1 + " - " + op2String.substring(0, op2String.indexOf('.')) + " = ");
                                 break;
                             case 3:
-                                String op1String2= String.valueOf(op1);
+                                String op1String2 = String.valueOf(op1);
                                 String op2String2 = String.valueOf(op2);
                                 calculationView.setText(op1String2.substring(0, op1String2.indexOf('.')) + " - " + op2String2.substring(0, op2String2.indexOf('.')) + " = ");
                                 break;
